@@ -1,0 +1,11 @@
+/build/
+/build-ncu/
+/results/ncu/
+/cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+__pycache__/
+*.pyc

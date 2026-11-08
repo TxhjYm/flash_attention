@@ -1,0 +1,8 @@
+build/
+results/
+.git/
+*.o
+*.so
+*.nsight-cuprof
+__pycache__/
+*.pyc
