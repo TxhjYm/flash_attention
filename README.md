@@ -7,7 +7,7 @@
 ## 目录结构
 
 ```
-flash-attention/
+flash_attention/
 ├── README.md
 ├── CMakeLists.txt                       # 构建配置（默认 sm_86）
 ├── build.sh                             # ./build.sh [clean|make]
@@ -84,8 +84,9 @@ flash-attention/
 ```bash
 ./build.sh make        # 配置并编译，产物在 build/flash_attention_tests
 ./run.sh               # 运行全部测试
-./run.sh list          # 列出测试
-./run.sh SoftmaxTest   # 按名称过滤（多个参数用 : 拼接 filter）
+./run.sh list          # 列出所有 case 的完整名字
+./run.sh 'Shapes/NaiveAttentionForwardTest.*'   # 按 suite 过滤（gtest 需要 .*）
+./run.sh FlashAttentionTest.CudaDeviceIsAvailable Shapes/NaiveAttentionForwardTest.QkMatchesReference/length64_dk8
 ./build.sh clean       # 删除 build/
 ```
 
@@ -98,7 +99,7 @@ cmake --build build --parallel
 
 ## 同步到远程 GPU 机器
 
-本地编辑，远程运行（远程目录 `~/work/flash-attention`）：
+本地编辑，远程运行（远程目录 `~/work/flash_attention`）：
 
 ```bash
 ./sync_up.sh      # 本地 -> 远程，--delete 会删除远程多余文件

@@ -26,4 +26,12 @@ for test_name in "$@"; do
     filter+=":$test_name"
 done
 
+matched_tests=$(./build/flash_attention_tests --gtest_list_tests \
+                    "--gtest_filter=$filter" | grep -c '^  ' || true)
+if [ "$matched_tests" -eq 0 ]; then
+    echo "No tests match filter: $filter" >&2
+    echo "Use './run.sh list' to see the full test names." >&2
+    exit 1
+fi
+
 exec ./build/flash_attention_tests "--gtest_filter=$filter"
